@@ -28,7 +28,9 @@ if com.is_open:
             break
         writtenBytesNum = com.write((command.upper() + ";").encode())
         print("Written {0:^5,d} bytes.".format(writtenBytesNum))
-        result = com.readline().decode()
-        print("Response -->: {0}".format(result))
+        result = com.readlines()
+        print("Response -->:")
+        for index, line in enumerate(result, 1):
+            print("Line {0}: {1}".format(index, line.decode()))
 com.close()
 print("Done.")
